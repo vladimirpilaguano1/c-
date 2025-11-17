@@ -1,0 +1,73 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+const double TARI = 0.45; // Tarifa fija del pasaje
+
+// Función para recargar (por referencia)
+// 'sald': referencia al saldo actual.
+// 'mont': monto a recargar.
+void recargar(double &sald, double mont) {
+    sald += mont;
+    cout << "Recarga exitosa. Saldo actual: $" << sald << endl;
+}
+
+// Función para pagar (por referencia y con return)
+// Retorna true si el pago fue exitoso.
+bool pagar(double &sald, double tari) {
+    if (sald >= tari) {
+        sald -= tari;
+        cout << "Pago exitoso. Saldo actual: $" << sald << endl;
+        return true;
+    } else {
+        cout << "Pago fallido. Saldo insuficiente: $" << sald << endl;
+        return false;
+    }
+}
+
+// Función para mostrar estado (void)
+void mostrarEstado(double sald, int pasa) {
+    cout << "Pasadas realizadas: " << pasa << endl;
+    cout << "Saldo final: $" << sald << endl;
+}
+
+int main() {
+    double sald = 0.00; // Saldo inicial
+    double mont;        // Monto a recargar
+    int pasa = 0;       // Contador de pasadas/viajes
+    
+    cout << fixed << setprecision(2);
+    cout << " ENUNCIADO 10" << endl;
+    cout << "Saldo actual: $" << sald << endl;
+    
+    // 1. Recargar Saldo
+    cout << "Ingrese monto a recargar (ej. 5 o 10): ";
+    cin >> mont;
+    recargar(sald, mont);
+    
+    // 2. Simular pagos
+    char opci;
+    while (true) {
+        cout << endl;
+        cout << "Desea pagar un pasaje de $" << TARI << "? (s/n): ";
+        cin >> opci;
+        
+        if (opci == 's' || opci == 'S') {
+            cout << "Pagando pasaje de $" << TARI << endl;
+            if (pagar(sald, TARI)) {
+                pasa++; // Incrementa contador solo si el pago fue exitoso
+            }
+        } else {
+            break;
+        }
+    }
+    
+    // 3. Mostrar estado final
+    cout << endl;
+    cout << " RESUMEN " << endl;
+    mostrarEstado(sald, pasa);
+
+    
+    return 0;
+}
