@@ -1,0 +1,76 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+// Función para cargar datos (void)
+void cargarDatos(string &prod, double &prec, int &cant) {
+    cout << "--- Carga de Datos ---" << endl;
+    cout << "Ingrese el nombre del producto: ";
+    cin.ignore();
+    getline(cin, prod);
+    
+    cout << "Ingrese el precio unitario: $";
+    cin >> prec;
+    
+    cout << "Ingrese la cantidad: ";
+    cin >> cant;
+}
+
+// Función para calcular subtotal (double con return)
+double calcularSubtotal(double prec, int cant) {
+    return prec * cant;
+}
+
+// Función para aplicar descuentos por referencia
+void aplicarDescuentos(double subt, int cant, double &total, double &desc) {
+    double desc1 = 0.0;
+    double desc2 = 0.0;
+    
+    // Descuento por cantidad
+    if (cant == 2) {
+        desc1 = subt * 0.10;
+    } else if (cant >= 3) {
+        desc1 = subt * 0.15;
+    }
+    
+    // Descuento adicional por subtotal (acumulativo)
+    if (subt > 200.0) {
+        desc2 = subt * 0.05;
+    }
+    
+    desc = desc1 + desc2;
+    total = subt - desc;
+}
+
+// Función para mostrar la factura (void)
+void mostrarFactura(string prod, double prec, int cant, double subt, double desc, double total) {
+    cout << fixed << setprecision(2);
+    
+    cout << endl;
+    cout << "FACTURA " << endl;
+    cout << "Producto:        " << prod << endl;
+    cout << "Precio Unitario: $" << prec << endl;
+    cout << "Cantidad:        " << cant << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "Subtotal:        $" << subt << endl;
+    cout << "Descuentos Aplicados: $" << desc << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "Total Final:     $" << total << endl;
+}
+
+int main() {
+    string prod;
+    double prec, subt, total, desc;
+    int cant;
+    
+    cout << "ENUNCIADO 9" << endl;
+    
+    cargarDatos(prod, prec, cant);
+    subt = calcularSubtotal(prec, cant);
+    aplicarDescuentos(subt, cant, total, desc);
+    mostrarFactura(prod, prec, cant, subt, desc, total);
+    
+    return 0;
+}
