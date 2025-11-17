@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+// Constante para el número de estudiantes
+const int ESTU = 4; // 4 estudiantes [cite: 34]
+
+// Función void: muestra todas las notas registradas.
+// 'nota': arreglo de calificaciones.
+// 'cant': cantidad de estudiantes.
+void mostrarNotas(float nota[], int cant) {
+    cout << "--- Calificaciones Registradas ---" << endl;
+    for (int i = 0; i < cant; i++) {
+        cout << "Estudiante " << (i + 1) << ": " << nota[i] << endl;
+    }
+}
+
+int main() {
+    // Variables
+    float notas[ESTU]; // Arreglo para 4 calificaciones [cite: 34]
+    
+    cout << " ENUNCIADO 2" << endl;
+    
+    // Solicitar e ingresar las calificaciones
+    for (int i = 0; i < ESTU; i++) {
+        cout << "Ingrese calificación del estudiante " << (i + 1) << ": ";
+        cin >> notas[i];
+    }
+    
+    // Llamada a la función void
+    mostrarNotas(notas, ESTU);
+    return 0;
+}
