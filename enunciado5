@@ -1,0 +1,46 @@
+#include <iostream>
+
+using namespace std;
+
+const int MAX = 10;
+
+// Función con paso por valor: multiplica y muestra sin alterar el arreglo.
+void multiplicarElementos(int arrg[], int tamn, int fact) {
+    cout << "--- Resultado de la Multiplicación ---" << endl;
+    for (int i = 0; i < tamn; i++) {
+        int resu = arrg[i] * fact;
+        cout << arrg[i] << " * " << fact << " = " << resu << endl;
+    }
+}
+
+int main() {
+    int arrg[MAX];
+    int cant;
+    int fact;
+    
+    cout << "ENUNCIADO 5" << endl;
+    
+    cout << "Ingrese la cantidad de números (max " << MAX << "): ";
+    cin >> cant;
+    
+    if (cant > MAX || cant <= 0) cant = MAX;
+    
+    for (int i = 0; i < cant; i++) {
+        cout << "Ingrese el número " << (i + 1) << ": ";
+        cin >> arrg[i];
+    }
+    
+    cout << "Ingrese el número por el cual multiplicar: ";
+    cin >> fact;
+    
+    multiplicarElementos(arrg, cant, fact);
+    
+    cout << endl;
+    cout << "--- Arreglo Original (Sin Alterar) ---" << endl;
+    for (int i = 0; i < cant; i++) {
+        cout << arrg[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
