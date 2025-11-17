@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+const int TAM = 5;
+
+// Función con paso por referencia: calcula la suma total.
+void calcularSuma(int arrg[], int tamn, int &suma) {
+    suma = 0;
+    for (int i = 0; i < tamn; i++) {
+        suma += arrg[i];
+    }
+}
+
+int main() {
+    int arrg[TAM];
+    int total;
+    
+    cout << "ENUNCIADO 3" << endl;
+    
+    for (int i = 0; i < TAM; i++) {
+        cout << "Ingrese el elemento " << (i + 1) << ": ";
+        cin >> arrg[i];
+    }
+    
+    calcularSuma(arrg, TAM, total);
+    
+    cout << endl;
+    cout << "La suma total de los elementos es: " << total << endl;
+    
+    return 0;
+}
