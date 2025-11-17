@@ -1,0 +1,45 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+// Función que devuelve el valor descontado.
+double calcularDescuento(double prec, double porc) {
+    return prec * (porc / 100.0);
+}
+
+// Función que retorna el precio final.
+double calcularPrecioFinal(double pbas, double pprm, double pcli) {
+    double desc1 = calcularDescuento(pbas, pprm);
+    double desc2 = calcularDescuento(pbas, pcli);
+    return pbas - (desc1 + desc2);
+}
+
+int main() {
+    double pbas, pprm, pcli, pfin;
+    
+    cout << fixed << setprecision(2);
+    cout << "ENUNCIADO 0" << endl;
+    
+    cout << "Ingrese el precio base del producto: $";
+    cin >> pbas;
+    
+    // Aunque los valores son fijos (15 y 10), se pide solicitarlos.
+    cout << "Ingrese el porcentaje de descuento por promoción (ej. 15): ";
+    cin >> pprm;
+    
+    cout << "Ingrese el porcentaje de descuento por cliente frecuente (ej. 10): ";
+    cin >> pcli;
+    
+    pfin = calcularPrecioFinal(pbas, pprm, pcli);
+    
+    double desc1 = calcularDescuento(pbas, pprm);
+    double desc2 = calcularDescuento(pbas, pcli);
+    
+    cout << endl;
+    cout << "Descuento por promoción (" << pprm << "%): $" << desc1 << endl;
+    cout << "Descuento por cliente frecuente (" << pcli << "%): $" << desc2 << endl;
+    cout << "Precio final del producto: $" << pfin << endl;
+    
+    return 0;
+}
