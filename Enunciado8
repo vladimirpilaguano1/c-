@@ -1,0 +1,42 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+const int MAX = 10;
+
+// Función con return: calcula y devuelve el promedio (double).
+double calcularYRetornarPromedio(int arrg[], int tamn) {
+    if (tamn <= 0) return 0.0;
+    
+    double suma = 0.0;
+    for (int i = 0; i < tamn; i++) {
+        suma += arrg[i];
+    }
+    return suma / tamn;
+}
+
+int main() {
+    int arrg[MAX];
+    int cant;
+    double prom;
+    
+    cout << "ENUNCIADO 8" << endl;
+    
+    cout << "Ingrese la cantidad de números (max " << MAX << "): ";
+    cin >> cant;
+    
+    if (cant > MAX || cant <= 0) cant = MAX;
+    
+    for (int i = 0; i < cant; i++) {
+        cout << "Ingrese el número " << (i + 1) << ": ";
+        cin >> arrg[i];
+    }
+    
+    prom = calcularYRetornarPromedio(arrg, cant);
+    
+    cout << endl;
+    cout << "El promedio de los elementos es: " << fixed << setprecision(2) << prom << endl;
+    
+    return 0;
+}
