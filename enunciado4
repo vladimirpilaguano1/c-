@@ -1,0 +1,42 @@
+#include <iostream>
+#include <limits> 
+
+using namespace std;
+
+const int MAX = 10;
+
+// Función con paso por referencia: identifica el valor mayor.
+void encontrarMayor(int arrg[], int cant, int &mayr) {
+    mayr = numeric_limits<int>::min(); 
+    
+    for (int i = 0; i < cant; i++) {
+        if (arrg[i] > mayr) {
+            mayr = arrg[i];
+        }
+    }
+}
+
+int main() {
+    int arrg[MAX];
+    int cant;
+    int mayr;
+    
+    cout << " ENUNCIADO 4" << endl;
+    
+    cout << "Ingrese la cantidad de números (max " << MAX << "): ";
+    cin >> cant;
+    
+    if (cant > MAX || cant <= 0) cant = MAX;
+    
+    for (int i = 0; i < cant; i++) {
+        cout << "Ingrese el número " << (i + 1) << ": ";
+        cin >> arrg[i];
+    }
+    
+    encontrarMayor(arrg, cant, mayr);
+    
+    cout << endl;
+    cout << "El valor mayor del arreglo es: " << mayr << endl;
+    
+    return 0;
+}
