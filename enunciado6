@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+const int MAX = 10;
+
+// Función con paso por valor y return: cuenta pares.
+int contarPares(int arrg[], int tamn) {
+    int cont = 0;
+    for (int i = 0; i < tamn; i++) {
+        if (arrg[i] % 2 == 0) {
+            cont++;
+        }
+    }
+    return cont;
+}
+
+int main() {
+    int arrg[MAX];
+    int cant;
+    int total;
+    
+    cout << "ENUNCIADO 6" << endl;
+    
+    cout << "Ingrese la cantidad de números (max " << MAX << "): ";
+    cin >> cant;
+    
+    if (cant > MAX || cant <= 0) cant = MAX;
+    
+    for (int i = 0; i < cant; i++) {
+        cout << "Ingrese el número " << (i + 1) << ": ";
+        cin >> arrg[i];
+    }
+    
+    total = contarPares(arrg, cant);
+    
+    cout << endl;
+    cout << "El total de números pares encontrados es: " << total << endl;
+    
+    return 0;
+}
